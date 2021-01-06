@@ -6,29 +6,26 @@ public class FactorialChecker {
     }
 
     public int calculator() throws IllegalArgumentException {
-        if (isLessThanZero()) {
+        if (isLessThanZero(number)) {
             throw new IllegalArgumentException("Negative Numbers Not Allowed!");
-        } else if (isEqualToZero()) {
-            return 1;
-        } else {
-            int ans = 1;
-            while (isGreaterThanZero()) {
-                ans *= (number--);
-            }
-
-            return ans;
+        }else {
+            return calculator(this.number);
         }
     }
 
-    private boolean isLessThanZero() {
+    private int calculator(int number){
+         if (isEqualToZero(number)) {
+            return 1;
+        } else {
+            return number*calculator(number-1);
+        }
+    }
+
+    private boolean isLessThanZero(int number) {
         return number < 0;
     }
 
-    private boolean isEqualToZero() {
+    private boolean isEqualToZero(int number) {
         return number == 0;
-    }
-
-    private boolean isGreaterThanZero() {
-        return number > 0;
     }
 }
